@@ -1,6 +1,6 @@
 # DDD Demo
 
-Projeto criado na gravação dos videos disponibilizados para o youtube [link playlist](https://www.youtube.com/playlist?list=PLUxrX6EvA-2Y9WzNR5Dl12VJ1Bsds2j8B)
+Projeto criado no decorrer da gravação dos videos disponibilizados para o youtube [link playlist](https://www.youtube.com/playlist?list=PLUxrX6EvA-2Y9WzNR5Dl12VJ1Bsds2j8B)
 
 
 ## Como executar o projeto
