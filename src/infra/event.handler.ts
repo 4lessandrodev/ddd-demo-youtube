@@ -13,6 +13,7 @@ export class PurchaseConfirmedHandler implements EventHandler<Purchase, void>{
         console.log('---------------------------');
         const email = `Ola ${obj.buyer.name},\nSeu pagamento no valor de R$ ${obj.payment.amount} foi aprovado com sucesso!\n\nAtt,\nTime App XYZ`;
         this.mailer.execute(email);
+        console.log('---------------------------');
     }
 }
 export default PurchaseConfirmedHandler;

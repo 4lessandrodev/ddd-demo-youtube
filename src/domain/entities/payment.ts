@@ -1,4 +1,3 @@
-
 import { Entity, Ok, Result, UID } from 'rich-domain';
 import Money from '../value-objects/money';
 

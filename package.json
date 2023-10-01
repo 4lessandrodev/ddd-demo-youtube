@@ -4,8 +4,8 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
-    "rich-domain": "^1.17.3",
-    "types-ddd": "^3.5.3"
+    "rich-domain": "^1.19.0",
+    "types-ddd": "^3.7.0"
   },
   "scripts": {
     "main": "ts-node ./src/infra/main.ts"
