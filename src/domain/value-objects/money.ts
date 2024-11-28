@@ -35,7 +35,7 @@ export class Money extends ValueObject<Props>{
         return new Money({ value: 0 });
     }
 
-    public static create(value: number): Result<Money> {
+    public static create(value: number): Result<Money | null> {
         const isPositive = Money.isValidProps({ value });
         if(!isPositive) return Fail('The value must be positive');
         return Ok(new Money({ value }));

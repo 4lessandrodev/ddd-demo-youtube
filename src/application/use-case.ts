@@ -12,8 +12,8 @@ interface Dto {
     user: string;
 }
 
-export class ProcessPayment implements IUseCase<Dto, Result<Purchase>>{
-    async execute(dto: Dto): Promise<Result<Purchase>> {
+export class ProcessPayment implements IUseCase<Dto, Result<Purchase | null>>{
+    async execute(dto: Dto): Promise<Result<Purchase | null>> {
         // regras
         const amountResult = Money.create(dto.amount);
         const discountResult = Money.create(dto.discount);
@@ -29,10 +29,10 @@ export class ProcessPayment implements IUseCase<Dto, Result<Purchase>>{
 
         if(results.isFail()) return Fail(results.error());
 
-        const amount = amountResult.value();
-        const discount = discountResult.value();
-        const fees = feeResult.value();
-        const name = buyerNameResult.value();
+        const amount = amountResult.value() as Money;
+        const discount = discountResult.value() as Money;
+        const fees = feeResult.value() as Money;
+        const name = buyerNameResult.value() as UserName;
 
         const props = { amount, discount, fees };
 

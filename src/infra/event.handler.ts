@@ -1,17 +1,15 @@
-import { EventHandler, HandlerPayload, ICommand } from "rich-domain";
+import { HandlerPayload, ICommand } from "rich-domain";
 import Purchase from "../domain/aggregates/purchase";
 
-export class PurchaseConfirmedHandler implements EventHandler<Purchase, void>{
+export class PurchaseConfirmedHandler {
 
     constructor(
         private readonly mailer: ICommand<string, void>
     ){}
 
-    execute(data: HandlerPayload<Purchase>): void {
-
-        const obj = data.aggregate.toObject();
+    execute(obj: any): void {
         console.log('---------------------------');
-        const email = `Ola ${obj.buyer.name},\nSeu pagamento no valor de R$ ${obj.payment.amount} foi aprovado com sucesso!\n\nAtt,\nTime App XYZ`;
+        const email = `Ola ${obj.buyer.name.value},\nSeu pagamento no valor de R$ ${obj.payment.amount.value} foi aprovado com sucesso!\n\nAtt,\nTime App XYZ`;
         this.mailer.execute(email);
         console.log('---------------------------');
     }

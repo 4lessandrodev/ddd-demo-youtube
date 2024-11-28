@@ -7,7 +7,7 @@ const money = Money.create({
 
 console.log(money.isOk());
 console.log(money.isFail());
-console.log(money.value().get('value'));
+console.log(money.value()?.get('value'));
 
-console.log(money.value().getCoin());
-console.log(money.value().add(100).getCoin());
+console.log(money.value()?.getCoin());
+console.log(money.value()?.add(100).getCoin());

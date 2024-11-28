@@ -21,15 +21,15 @@ export class Purchase extends Aggregate<Props>{
     }
 
     public static begin(props: Omit<Props, 'status' | 'code'>): Purchase {
-        const status = Status.create('PENDING').value();
-        const code = Pin.generatePin({ lettersLength: 3, numbersLength: 3 }).value();
+        const status = Status.create('PENDING').value() as Status;
+        const code = Pin.generatePin({ lettersLength: 3, numbersLength: 3 }).value() as Pin;
         return new Purchase({ ...props, status, code });
     }
 
     confirm(): Purchase {
         const status = Status.create('COMPLETED').value();
         this.addEvent(new PurchaseConfirmed());
-        this.props.status = status;
+        this.props.status = status as Status;
         return this;
     }
 

@@ -1,16 +1,15 @@
-import { EventHandler, IDomainEvent, IHandle as DomainEvent } from "rich-domain";
+import { EventHandler } from "rich-domain";
 import PurchaseEvents from "./index";
 import Purchase from "../aggregates/purchase";
 
-export class PurchaseConfirmed implements DomainEvent<Purchase>{
-    public eventName: string;
+export class PurchaseConfirmed extends EventHandler<Purchase> {
     constructor() {
-        this.eventName = PurchaseEvents.PURCHASE_CONFIRMED;
+        super({ eventName: PurchaseEvents.PURCHASE_CONFIRMED })
     }
 
-    dispatch(event: IDomainEvent<Purchase>, handler: EventHandler<Purchase, void>): void {
-        console.log('Domain Event Called');
-        handler.execute({ aggregate: event.aggregate, eventName: this.eventName });
+    dispatch(entity: Purchase): void {
+        const model = entity.toObject();
+        entity.context().dispatchEvent('main:sample', model);
     }
 }
 
